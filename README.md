@@ -1,267 +1,311 @@
-# Personal Professional Website
+# Personal Professional Website - Kunti Najma Jalia
 
-> Personal professional-academic platform built with Next.js 15 and Firebase
+> Platform personal-profesional-akademik menggunakan HTML, CSS, JavaScript, dan Firebase
 
-## 🌐 Live Demo
+## 🌐 Overview
 
-Website ini akan di-deploy di Vercel. URL akan tersedia setelah deployment.
+Website ini dirancang sebagai **digital hub** yang mengintegrasikan identitas profesional, akademis, dan personal dalam satu ekosistem. Bukan sekadar portfolio, tetapi representasi cara berpikir, nilai, dan perjalanan intelektual yang berkelanjutan.
+
+### Filosofi Desain
+- **Content-First**: Konten adalah prioritas utama, design mendukung readability
+- **Minimalist & Professional**: Clean aesthetic yang tidak mengalihkan perhatian dari substansi
+- **Accessible**: Mudah dinavigasi dan diakses oleh berbagai audiens
+- **Scalable**: Struktur modular yang mudah dikembangkan
 
 ## ✨ Features
 
-- 🎨 **Modern Design** - Clean, minimal, dan professional
-- 📱 **Responsive** - Optimized untuk semua device sizes
-- ⚡ **Fast Performance** - Built with Next.js 15 + Turbopack
-- 🔥 **Firebase Integration** - Firestore, Authentication, Storage
-- 📝 **Dynamic Content** - Publications system dengan Firestore
-- 🎯 **SEO Optimized** - Metadata dan semantic HTML
+### 🎯 Core Sections
+1. **Beranda** - Hero section dengan positioning statement dan 3 pilar identitas
+2. **Tentang** - Filosofi, perjalanan singkat, dan nilai-nilai inti
+3. **Pendidikan & Pelatihan** - Formal education dan continuous learning
+4. **Keahlian** - Technical & soft skills dengan evidence
+5. **Pengalaman** - Work experience dan organizational involvement
+6. **Proyek** - Portfolio dengan detailed case studies
+7. **Publikasi** - Academic outputs dan research papers
+8. **Blog** - Reflective writings dan thought leadership
+9. **Kontak** - Professional contact information
 
-## 🛠️ Tech Stack
-
-- **Framework:** Next.js 15 (App Router)
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS
-- **Backend:** Firebase (Firestore, Auth, Storage)
-- **Hosting:** Vercel (Frontend) + Firebase (Backend)
-- **Version Control:** Git & GitHub
+### 🛠️ Technical Features
+- **Vanilla Stack**: HTML5, CSS3, JavaScript (ES6+) - No frameworks!
+- **Firebase Integration**: Firestore untuk dynamic content
+- **Responsive Design**: Mobile-first approach
+- **Smooth Navigation**: Sticky header & smooth scroll
+- **Fast Loading**: Minimal dependencies, optimized assets
+- **SEO Optimized**: Semantic HTML & meta tags
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-
-- Node.js 18+ 
-- npm atau yarn
+- Modern web browser
+- Text editor (VS Code recommended)
 - Firebase account
-- Git
+- Basic understanding of HTML/CSS/JS
 
 ### Installation
 
 1. **Clone repository**
-
 ```bash
 git clone https://github.com/kuntinajma/personal-website.git
 cd personal-website
 ```
 
-2. **Install dependencies**
+2. **Setup Firebase**
 
-```bash
-npm install
-```
-
-3. **Setup Firebase**
-
-- Buka [Firebase Console](https://console.firebase.google.com)
-- Create new project atau gunakan existing project
-- Register web app dan copy configuration
+- Buat project di [Firebase Console](https://console.firebase.google.com)
 - Enable Firestore Database
-- Enable Authentication (optional)
-- Enable Storage (optional)
+- Copy Firebase config
+- Update `js/firebase-config.js` dengan credentials Anda:
 
-4. **Configure environment variables**
+```javascript
+const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
+};
+```
 
-Copy `.env.example` ke `.env.local`:
+3. **Run locally**
+
+Karena menggunakan ES6 modules, Anda perlu local server:
 
 ```bash
-cp .env.example .env.local
+# Gunakan Python
+python -m http.server 8000
+
+# Atau Node.js http-server
+npx http-server -p 8000
+
+# Atau VS Code Live Server extension
 ```
 
-Edit `.env.local` dan isi dengan Firebase credentials:
+Buka `http://localhost:8000` di browser.
 
-```env
-NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key_here
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
-NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
-```
-
-5. **Run development server**
-
-```bash
-npm run dev
-```
-
-Buka [http://localhost:3000](http://localhost:3000) di browser.
-
-## 📁 Project Structure
+## 📋 Project Structure
 
 ```
 personal-website/
-├── src/
-│   ├── app/                 # Next.js App Router
-│   │   ├── page.tsx         # Homepage
-│   │   ├── layout.tsx       # Root layout
-│   │   ├── globals.css      # Global styles
-│   │   ├── about/           # About page
-│   │   ├── research/        # Research page
-│   │   ├── publications/    # Publications page
-│   │   ├── projects/        # Projects page
-│   │   └── contact/         # Contact page
-│   ├── components/          # React components
-│   │   ├── Navbar.tsx
-│   │   └── Footer.tsx
-│   └── lib/                 # Utilities & configs
-│       └── firebase.ts      # Firebase configuration
-├── public/                  # Static assets
-├── .env.example             # Environment variables template
-├── .gitignore
-├── package.json
-├── tsconfig.json
-├── tailwind.config.ts
-└── next.config.ts
+├── index.html              # Main HTML file
+├── css/
+│   ├── style.css          # Main styles
+│   ├── sections.css       # Section-specific styles
+│   └── responsive.css     # Responsive breakpoints
+├── js/
+│   ├── firebase-config.js # Firebase setup
+│   └── main.js            # Main JavaScript
+├── sections/
+│   ├── tentang.html       # About section
+│   ├── pendidikan.html    # Education section
+│   └── keahlian.html      # Skills section
+└── README.md
 ```
 
-## 📦 Adding Publications to Firestore
+## 🔥 Firebase Setup
 
-Untuk menambahkan publikasi, buat collection `publications` di Firestore dengan struktur:
+### 1. Create Collections
 
+Buat collections berikut di Firestore:
+
+#### `highlights` collection
+```javascript
+{
+  title: "Project Title",
+  category: "Development" | "Research" | "Writing",
+  description: "Brief description",
+  date: "2025-01",
+  link: "https://...",
+  order: 1
+}
+```
+
+#### `publications` collection
 ```javascript
 {
   title: "Paper Title",
   authors: "Author 1, Author 2",
-  year: 2024,
-  venue: "Conference/Journal Name",
-  type: "Conference Paper" | "Journal Article" | "Working Paper",
-  abstract: "Short description...",
-  url: "https://link-to-paper.com" // optional
+  year: 2025,
+  venue: "Conference/Journal",
+  type: "Conference" | "Journal" | "Preprint",
+  abstract: "Abstract text",
+  url: "https://...",
+  status: "Published" | "Under Review"
 }
 ```
 
-### Cara menambahkan via Firebase Console:
-
-1. Buka Firebase Console → Firestore Database
-2. Klik "Start collection"
-3. Collection ID: `publications`
-4. Add document dengan field di atas
-5. Refresh halaman Publications di website
-
-## 🚀 Deployment ke Vercel
-
-### Via Vercel Dashboard (Recommended)
-
-1. Push code ke GitHub (sudah dilakukan)
-2. Login ke [Vercel](https://vercel.com)
-3. Klik "New Project" atau "Add New..."
-4. Import repository `kuntinajma/personal-website`
-5. **Configure Environment Variables:**
-   - Klik "Environment Variables"
-   - Tambahkan semua variable dari `.env.local`
-6. Klik "Deploy"
-7. Tunggu 2-3 menit, website akan live!
-
-### Via Vercel CLI
-
-```bash
-npm i -g vercel
-vercel login
-vercel
+#### `projects` collection
+```javascript
+{
+  title: "Project Name",
+  summary: "Brief summary",
+  role: "Your role",
+  period: "2024-2025",
+  tags: ["Next.js", "Firebase"],
+  background: "Problem context",
+  approach: "How you solved it",
+  impact: "Results & learning",
+  links: {
+    github: "https://...",
+    live: "https://..."
+  }
+}
 ```
 
-Follow the prompts dan jangan lupa add environment variables di dashboard.
+### 2. Security Rules
 
-## 🔧 Development
-
-### Available Scripts
-
-```bash
-# Run development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Start production server
-npm run start
-
-# Run linter
-npm run lint
-```
-
-### Adding New Pages
-
-1. Buat folder baru di `src/app/page-name/`
-2. Buat file `page.tsx`
-3. Export default component
-4. Update Navbar links di `src/components/Navbar.tsx`
-
-### Styling Guidelines
-
-- Gunakan Tailwind CSS utility classes
-- Maintain consistent spacing (px-4, py-16, mb-8, etc.)
-- Stick to color palette: gray scale + accent colors
-- Ensure responsive design (use md: breakpoints)
-
-## 🔒 Security
-
-- `.env.local` **JANGAN** di-commit ke Git (sudah ada di `.gitignore`)
-- Firebase Security Rules harus di-setup untuk production
-- Update Firestore rules dari test mode ke production mode sebelum launch
-
-### Firebase Security Rules Example:
+Update Firestore rules untuk production:
 
 ```javascript
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Publications - read only
-    match /publications/{document} {
+    // Public read, authenticated write
+    match /{collection}/{document} {
       allow read: if true;
-      allow write: if request.auth != null; // Only authenticated users
+      allow write: if request.auth != null;
     }
   }
 }
 ```
 
-## 📝 Customization
+## 🎨 Customization
 
-### Update Personal Information
+### Update Content
 
-- **Name & Bio:** Edit `src/app/page.tsx`
-- **About page:** Edit `src/app/about/page.tsx`
-- **Contact info:** Edit `src/app/contact/page.tsx`
-- **Footer links:** Edit `src/components/Footer.tsx`
+1. **Personal Info** - Edit `index.html` hero section
+2. **About** - Edit `sections/tentang.html`
+3. **Education** - Edit `sections/pendidikan.html`
+4. **Skills** - Edit `sections/keahlian.html`
 
-### Change Color Scheme
+### Update Styles
 
-Edit `tailwind.config.ts` untuk customize colors:
-
-```typescript
-theme: {
-  extend: {
-    colors: {
-      primary: '#your-color',
-      // Add custom colors
-    },
-  },
+1. **Colors** - Edit CSS variables di `css/style.css`:
+```css
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
 }
 ```
 
-## 📊 Future Enhancements
+2. **Typography** - Update font family:
+```css
+:root {
+    --font-primary: 'Your Font', sans-serif;
+}
+```
 
-- [ ] Blog system dengan MDX
+3. **Spacing** - Adjust spacing variables
+
+### Add New Sections
+
+1. Create new HTML file di `sections/`
+2. Add nav link di header
+3. Add corresponding styles di `css/sections.css`
+4. Update JavaScript if needed
+
+## 🚀 Deployment
+
+### Option 1: Firebase Hosting
+
+```bash
+# Install Firebase CLI
+npm install -g firebase-tools
+
+# Login
+firebase login
+
+# Initialize
+firebase init hosting
+
+# Deploy
+firebase deploy
+```
+
+### Option 2: Vercel
+
+1. Push to GitHub
+2. Import project di [Vercel](https://vercel.com)
+3. Deploy (automatic)
+
+### Option 3: Netlify
+
+1. Drag & drop folder ke [Netlify Drop](https://app.netlify.com/drop)
+2. Or connect GitHub repo
+
+### Option 4: GitHub Pages
+
+1. Push to GitHub
+2. Settings → Pages
+3. Select branch to deploy
+
+## 📝 Content Management
+
+### Static Content
+- Edit HTML files directly
+- Update via Git workflow
+- Deploy changes
+
+### Dynamic Content (Firebase)
+- Update via Firebase Console
+- Or create admin panel (future enhancement)
+- Changes reflect immediately
+
+## 🛡️ Best Practices
+
+### Performance
+- Minimize CSS/JS files before production
+- Optimize images (use WebP format)
+- Lazy load images
+- Use CDN for Firebase
+
+### SEO
+- Update meta tags for each page
+- Add structured data (JSON-LD)
+- Create sitemap.xml
+- Add robots.txt
+
+### Accessibility
+- Use semantic HTML
+- Add alt text to images
+- Ensure keyboard navigation
+- Test with screen readers
+
+### Security
+- Never commit Firebase credentials
+- Use environment variables
+- Set proper Firestore rules
+- Implement CORS if needed
+
+## 📈 Future Enhancements
+
 - [ ] Admin dashboard untuk manage content
-- [ ] Contact form dengan Firebase Functions
+- [ ] Blog system dengan Markdown support
 - [ ] Search functionality
 - [ ] Dark mode toggle
-- [ ] Analytics integration
-- [ ] RSS feed
 - [ ] Multi-language support (ID/EN)
+- [ ] Contact form dengan email integration
+- [ ] Analytics dashboard
+- [ ] RSS feed untuk blog
+- [ ] PDF export untuk CV
 
 ## 👥 Contributing
 
-Ini adalah personal website, namun feedback dan suggestions sangat diterima!
+Ini adalah personal website, namun suggestions dan improvements welcome!
 
 ## 📝 License
 
-MIT License - Feel free to use this as template untuk website Anda sendiri.
+MIT License - Feel free to use as template.
 
-## 🚀 Author
+## 👤 Author
 
-**Najma**
+**Kunti Najma Jalia**
 - GitHub: [@kuntinajma](https://github.com/kuntinajma)
-- Website: [Coming soon after deployment]
+- Email: [Your Email]
 
 ---
 
-**Built with ❤️ using Next.js and Firebase**
+**Built with ❤️ using vanilla HTML, CSS, JavaScript & Firebase**
+
+_Website ini merepresentasikan perjalanan profesional dan intelektual yang terus berkembang._
